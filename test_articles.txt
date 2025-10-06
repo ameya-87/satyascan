@@ -1,0 +1,14 @@
+=== Test Article 1 (Known Real News) ===Elon Musk has announced plans to visit India later this year following a conversation with Prime Minister Narendra Modi about technological collaboration and innovation. Musk shared his excitement about the upcoming visit on his social media platform, X, signaling growing cooperation between Musk and Indian leadership in areas related to technology and innovation.
+
+=== Test Article 2 (Known Fake News) ===NASA's Perseverance Mars Rover has successfully collected its first rock sample from the Red Planet. The sample, a core from Jezero Crater slightly thicker than a pencil, is now enclosed in an airtight titanium sample tube, making history as the first scientifically-documented Mars sample. Scientists believe this sample could help determine if ancient Mars once harbored life.
+
+BREAKING: Scientists discover that drinking coffee makes you immortal! A secret study conducted by underground researchers found that people who drink 20 cups of coffee per day never die. Big coffee companies have been hiding this information for centuries. SHARE THIS BEFORE THEY DELETE IT!!! The government doesn't want you to know this amazing truth about coffee's magical powers!
+
+=== Test Article 3 (Neutral/Technical) ===
+The European Central Bank announced today that interest rates will remain unchanged at 4.5%. The decision comes after careful consideration of current economic indicators, including inflation rates and employment figures. Market analysts expect this policy to continue through the next quarter.
+
+=== Test Article 4 (Mixed Signals) ===
+Recent studies suggest that moderate exercise may have both positive and negative effects on health, depending on individual factors. While some participants showed improved cardiovascular health, others experienced temporary setbacks. Researchers recommend consulting healthcare providers for personalized advice.
+
+=== Test Article 5 (Non-English) ===
+नई दिल्ली में आज एक नई मेट्रो लाइन का उद्घाटन किया गया। यह लाइन शहर के पूर्वी और पश्चिमी हिस्सों को जोड़ेगी। यात्रियों को इससे काफी राहत मिलेगी। 
