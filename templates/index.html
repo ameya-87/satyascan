@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SatyaScan | AI-Powered News Verification</title>
+    <meta name="description" content="SatyaScan - Advanced AI-powered fake news detection system supporting English, Hindi, and Marathi languages">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 3D Background Canvas -->
+    <canvas id="bg-canvas"></canvas>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>SatyaScan</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#analyze">Analyze</a>
+                <a href="#features">Features</a>
+                <a href="#about">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="gradient-text">SatyaScan</span>
+                </h1>
+                <p class="hero-subtitle">
+                    AI-powered news verification system that detects fake news across multiple languages
+                    with 99% accuracy. Supporting English, Hindi, and Marathi.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">99%</div>
+                        <div class="stat-label">Accuracy</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Languages</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">20K+</div>
+                        <div class="stat-label">Features</div>
+                    </div>
+                </div>
+                <a href="#analyze" class="cta-button">
+                    <span>Start Analyzing</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+        </div>
+    </section>
+
+    <!-- Analysis Section -->
+    <section id="analyze" class="analyze-section">
+        <div class="container">
+            <h2 class="section-title">Analyze News Article</h2>
+            <p class="section-subtitle">Paste your news article below and get instant verification</p>
+            
+            <div class="analysis-card">
+                <div class="input-group">
+                    <label for="language-select">Language</label>
+                    <select id="language-select" class="language-select">
+                        <option value="auto">Auto Detect</option>
+                        <option value="en">English</option>
+                        <option value="hi">Hindi (हिंदी)</option>
+                        <option value="mr">Marathi (मराठी)</option>
+                    </select>
+                </div>
+                
+                <div class="input-group">
+                    <label for="text-input">News Article Text</label>
+                    <textarea 
+                        id="text-input" 
+                        class="text-input" 
+                        placeholder="Paste your news article here...&#10;&#10;Example: Elon Musk has announced plans to visit India later this year following a conversation with Prime Minister Narendra Modi about technological collaboration and innovation."
+                        rows="8"
+                    ></textarea>
+                    <div class="char-count">
+                        <span id="char-count">0</span> characters
+                    </div>
+                </div>
+                
+                <button id="analyze-btn" class="analyze-button">
+                    <span class="btn-text">Analyze Article</span>
+                    <span class="btn-loader" style="display: none;">
+                        <svg class="spinner" width="20" height="20" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none" opacity="0.25"/>
+                            <path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+
+            <!-- Results Section -->
+            <div id="results" class="results-container" style="display: none;">
+                <div class="result-card">
+                    <div class="result-header">
+                        <h3>Analysis Results</h3>
+                        <div id="verdict-badge" class="verdict-badge">
+                            <span id="verdict-text"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="result-content">
+                        <div class="confidence-meter">
+                            <div class="meter-label">Confidence</div>
+                            <div class="meter-bar-container">
+                                <div id="confidence-bar" class="meter-bar"></div>
+                            </div>
+                            <div id="confidence-value" class="meter-value">0%</div>
+                        </div>
+                        
+                        <div class="result-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Detected Language:</span>
+                                <span id="detected-lang" class="detail-value">-</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Sentiment:</span>
+                                <span id="sentiment" class="detail-value">-</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Subjectivity:</span>
+                                <span id="subjectivity" class="detail-value">-</span>
+                            </div>
+                        </div>
+                        
+                        <div id="translation-section" class="translation-section" style="display: none;">
+                            <h4>Translation</h4>
+                            <p id="translation-text"></p>
+                        </div>
+                        
+                        <div id="features-section" class="features-section">
+                            <h4>Key Features Influencing Decision</h4>
+                            <ul id="features-list"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <h2 class="section-title">Advanced Features</h2>
+            <p class="section-subtitle">Powered by cutting-edge machine learning technology</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3>Multilingual Support</h3>
+                    <p>Automatic language detection and translation for English, Hindi, and Marathi articles</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                    </div>
+                    <h3>99% Accuracy</h3>
+                    <p>Calibrated Linear SVM model trained on 20,000+ verified news articles</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+                        </svg>
+                    </div>
+                    <h3>Real-time Analysis</h3>
+                    <p>Instant feedback with detailed confidence scores and feature importance</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                        </svg>
+                    </div>
+                    <h3>Sentiment Analysis</h3>
+                    <p>Advanced sentiment and subjectivity analysis to detect emotional manipulation</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 3h18v18H3zM9 9h6v6H9z"/>
+                        </svg>
+                    </div>
+                    <h3>Feature Engineering</h3>
+                    <p>Word-level and character-level TF-IDF features with 20,000+ dimensions</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+                        </svg>
+                    </div>
+                    <h3>Explainable AI</h3>
+                    <p>Transparent decision-making with detailed feature importance analysis</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">About the System</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        SatyaScan leverages state-of-the-art machine learning algorithms to identify potentially 
+                        false information across multiple languages. The system uses a calibrated Linear SVM model 
+                        trained on a balanced dataset of 20,000 verified news articles.
+                    </p>
+                    <p>
+                        The model combines word-level and character-level TF-IDF features with advanced numeric 
+                        features including sentiment analysis, writing style metrics, and statistical patterns. 
+                        This multi-dimensional approach ensures high accuracy and reliability in news verification.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">scikit-learn</span>
+                        <span class="tech-badge">Flask</span>
+                        <span class="tech-badge">Three.js</span>
+                        <span class="tech-badge">NLP</span>
+                        <span class="tech-badge">Machine Learning</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 SatyaScan. Built with AI and Machine Learning.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
+
