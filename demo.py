@@ -21,11 +21,21 @@ def demo_usage():
     print("• English (Native)")
     print("• Hindi (हिंदी) - Auto-translated to English")
     print("• Marathi (मराठी) - Auto-translated to English")
+    print("• Tamil (தமிழ்) - Auto-translated to English")
+    print("• Telugu (తెలుగు) - Auto-translated to English")
+    print("• Bengali (বাংলা) - Auto-translated to English")
+    print("• Gujarati (ગુજરાતી) - Auto-translated to English")
+    print("• Kannada (ಕನ್ನಡ) - Auto-translated to English")
+    print("• Malayalam (മലയാളം) - Auto-translated to English")
+    print("• Punjabi (ਪੰਜਾਬੀ) - Auto-translated to English")
+    print("• Odia (ଓଡ଼ିଆ) - Auto-translated to English")
+    print("• Urdu (اردو) - Auto-translated to English")
+    print("• Assamese (অসমীয়া) - Auto-translated to English")
     print()
     
     print("🚀 How to Use:")
     print("1. Run the GUI: python app/main_gui.py")
-    print("2. Select language from dropdown (Auto Detect, English, Hindi, Marathi)")
+    print("2. Select language from dropdown (Auto Detect or choose from 13+ languages)")
     print("3. Paste news article text")
     print("4. Click 'Analyze Text'")
     print("5. View results with verdict, confidence, and analysis")
@@ -88,6 +98,7 @@ def demo_usage():
 
 if __name__ == "__main__":
     demo_usage()
+
 
 
 

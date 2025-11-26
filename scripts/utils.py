@@ -65,7 +65,9 @@ def preprocess_text(text):
     except:
         lang = "unknown"
 
-    if lang not in ['en', 'hi', 'mr']:
+    # Supported Indian languages
+    supported_languages = ['en', 'hi', 'mr', 'ta', 'te', 'bn', 'gu', 'kn', 'ml', 'pa', 'or', 'ur', 'as']
+    if lang not in supported_languages:
         return "", "unsupported"
 
     if lang != 'en':

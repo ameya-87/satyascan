@@ -1,10 +1,10 @@
 # Multilingual Fake News Detection System
 
 ## Project Overview
-This project implements a machine learning-based system for detecting fake news across multiple languages (English, Hindi, and Marathi). The system combines natural language processing, machine learning, and a user-friendly graphical interface to help users identify potential fake news articles.
+This project implements a machine learning-based system for detecting fake news across 13+ Indian languages. The system combines natural language processing, machine learning, and a user-friendly graphical interface to help users identify potential fake news articles.
 
 ## Key Features
-- **Multilingual Support**: Supports English, Hindi, and Marathi with automatic language detection and translation
+- **Multilingual Support**: Supports 13+ Indian languages (English, Hindi, Marathi, Tamil, Telugu, Bengali, Gujarati, Kannada, Malayalam, Punjabi, Odia, Urdu, Assamese) with automatic language detection and translation
 - **Real-time Analysis**: Instant feedback on news article authenticity
 - **Advanced Feature Analysis**: 
   - Combined word and character-level TF-IDF features
@@ -44,7 +44,7 @@ This project implements a machine learning-based system for detecting fake news 
 
 ### 2. Text Processing Pipeline
 1. Language detection (auto or manual selection)
-2. Translation (Hindi/Marathi → English)
+2. Translation (All Indian languages → English)
 3. Text preprocessing
 4. Feature extraction (word + character + numeric)
 5. Feature scaling
@@ -52,7 +52,7 @@ This project implements a machine learning-based system for detecting fake news 
 
 ### 3. Graphical User Interface
 - Built with PyQt6
-- Language selection dropdown (Auto Detect, English, Hindi, Marathi)
+- Language selection dropdown (Auto Detect + 13 Indian languages)
 - Clean, intuitive design
 - Real-time analysis
 - Progress indication
@@ -134,7 +134,7 @@ pip install -r requirements.txt
 ```bash
 python app/main_gui.py
 ```
-2. Select language (Auto Detect, English, Hindi, or Marathi)
+2. Select language (Auto Detect or choose from 13+ Indian languages)
 3. Paste news article text into the input area
 4. Click "Analyze Text"
 5. Review the results:
@@ -177,10 +177,10 @@ This will generate artifacts under `models/`:
 
 ## Research and Approach (Detailed)
 ### Problem & Constraints
-Goal: Detect fake news across English, Hindi, and Marathi with a lightweight, reproducible pipeline that runs locally and provides calibrated probabilities for user-facing UX.
+Goal: Detect fake news across 13+ Indian languages with a lightweight, reproducible pipeline that runs locally and provides calibrated probabilities for user-facing UX.
 
 Constraints and choices:
-- Data primarily in English; Hindi/Marathi availability is limited → translate to English and train a single model.
+- Data primarily in English; Indian language availability is limited → translate all languages to English and train a single model.
 - Favor fast, interpretable, CPU-friendly methods for a desktop GUI → LinearSVC with calibration.
 - Provide user trust signals → show confidence scores, language detection, sentiment, and (when available) top features.
 
@@ -239,8 +239,18 @@ All numeric features are scaled with `StandardScaler` and concatenated with spar
 
 ### Supported Languages
 - **English**: Native support
-- **Hindi**: Automatic translation to English
-- **Marathi**: Automatic translation to English
+- **Hindi (हिंदी)**: Automatic translation to English
+- **Marathi (मराठी)**: Automatic translation to English
+- **Tamil (தமிழ்)**: Automatic translation to English
+- **Telugu (తెలుగు)**: Automatic translation to English
+- **Bengali (বাংলা)**: Automatic translation to English
+- **Gujarati (ગુજરાતી)**: Automatic translation to English
+- **Kannada (ಕನ್ನಡ)**: Automatic translation to English
+- **Malayalam (മലയാളം)**: Automatic translation to English
+- **Punjabi (ਪੰਜਾਬੀ)**: Automatic translation to English
+- **Odia (ଓଡ଼ିଆ)**: Automatic translation to English
+- **Urdu (اردو)**: Automatic translation to English
+- **Assamese (অসমীয়া)**: Automatic translation to English
 
 ### Language Detection
 - Automatic language detection using `langdetect`
@@ -254,7 +264,7 @@ All numeric features are scaled with `StandardScaler` and concatenated with spar
 4. Process translated text through ML pipeline
 
 ## Future Improvements
-1. Support for more Indian languages (Tamil, Telugu, Bengali, etc.)
+1. Support for additional regional languages and dialects
 2. Deep learning models for better accuracy
 3. URL input support for direct article analysis
 4. Browser extension integration

@@ -240,7 +240,17 @@ function displayResults(result) {
     const langMap = {
         'en': 'English',
         'hi': 'Hindi (हिंदी)',
-        'mr': 'Marathi (मराठी)'
+        'mr': 'Marathi (मराठी)',
+        'ta': 'Tamil (தமிழ்)',
+        'te': 'Telugu (తెలుగు)',
+        'bn': 'Bengali (বাংলা)',
+        'gu': 'Gujarati (ગુજરાતી)',
+        'kn': 'Kannada (ಕನ್ನಡ)',
+        'ml': 'Malayalam (മലയാളം)',
+        'pa': 'Punjabi (ਪੰਜਾਬੀ)',
+        'or': 'Odia (ଓଡ଼ିଆ)',
+        'ur': 'Urdu (اردو)',
+        'as': 'Assamese (অসমীয়া)'
     };
     detectedLang.textContent = langMap[result.detected_language] || result.detected_language;
 

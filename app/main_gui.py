@@ -147,7 +147,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         print("Initializing main window...")
-        self.setWindowTitle("Multilingual Fake News Detector (English, Hindi, Marathi)")
+        self.setWindowTitle("SatyaScan - Multilingual Fake News Detector (13+ Indian Languages)")
         self.setMinimumSize(800, 600)
         
         # Create central widget and layout
@@ -158,11 +158,15 @@ class MainWindow(QMainWindow):
         # Language selection
         lang_label = QLabel("Select Language:")
         self.language_combo = QComboBox()
-        self.language_combo.addItems(['Auto Detect', 'English', 'Hindi', 'Marathi'])
+        self.language_combo.addItems([
+            'Auto Detect', 'English', 'Hindi', 'Marathi', 'Tamil', 'Telugu', 
+            'Bengali', 'Gujarati', 'Kannada', 'Malayalam', 'Punjabi', 
+            'Odia', 'Urdu', 'Assamese'
+        ])
         
         # Create widgets
         self.text_input = QTextEdit()
-        self.text_input.setPlaceholderText("Paste news article text here...\nSupports English, Hindi, and Marathi languages.")
+        self.text_input.setPlaceholderText("Paste news article text here...\nSupports 13+ Indian languages including Hindi, Tamil, Telugu, Bengali, Gujarati, Kannada, Malayalam, Punjabi, and more.")
         
         self.analyze_button = QPushButton("Analyze Text")
         self.analyze_button.clicked.connect(self.analyze_text)
@@ -195,7 +199,17 @@ class MainWindow(QMainWindow):
             'Auto Detect': 'auto',
             'English': 'en',
             'Hindi': 'hi',
-            'Marathi': 'mr'
+            'Marathi': 'mr',
+            'Tamil': 'ta',
+            'Telugu': 'te',
+            'Bengali': 'bn',
+            'Gujarati': 'gu',
+            'Kannada': 'kn',
+            'Malayalam': 'ml',
+            'Punjabi': 'pa',
+            'Odia': 'or',
+            'Urdu': 'ur',
+            'Assamese': 'as'
         }
         selected_lang = lang_map[self.language_combo.currentText()]
         
