@@ -1,4 +1,4 @@
-# Multilingual Fake News Detection System
+# SatyaScan
 
 ## Project Overview
 This project implements a machine learning-based system for detecting fake news across 13+ Indian languages. The system combines natural language processing, machine learning, and a user-friendly graphical interface to help users identify potential fake news articles.
